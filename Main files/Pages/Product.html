@@ -1,0 +1,68 @@
+<html>
+    <!title for page>
+    <title>Product management</title>
+    <!section where messages are flashed>
+    {%for message in get_flashed_messages()%}
+		<div style="text-align:center;" class="alert alert-warning alert-dismissible fade show" role="alert">
+			{{message}}
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+		</div>
+	{%endfor%}
+
+<!section for generating remove product page>
+    {%if type=='removal'%}
+        <!title for page>
+        <h1>Product removal</h1>
+        <body>
+            <!prints all items related to logged in user in a list format>
+            {%for x in range(0,length)%}
+                {{results[x]}}<br>
+            {%endfor%}
+            <!form to take input of item to be removed>
+            <form method="post" action="/RemoveProduct">
+                <label for="Product_ID_Form">Product ID:</label>
+            <input type="integer" id="Product_ID_Form" name="Product_ID_Form"><br>
+            <input type="submit" value="Submit">
+            </form>
+        </body>
+    {%endif%}
+
+<!section for generating add product page>
+    {%if type=='addition'%}
+        <!title for page>
+        <h1>Product addition</h1>
+        <body>
+            <!prints all items related to logged in user in a list format>
+            {%for x in range(0,length)%}
+                {{results[x]}}<br>
+            {%endfor%}
+            <!form to take input of item to be removed>
+            <form method="post" action="/AddProduct" enctype="multipart/form-data">
+                <label for="ProductName">Product name:</label>
+                <input type="text" id="ProductName" name="ProductName"><br>
+                <label for="ProductPrice">Product price:</label>
+                <input type="text" id="ProductPrice" name="ProductPrice"><br>
+                <!option select>
+                <select name="ProductType" id="ProductType">
+                    <option value="select">Option Select</option>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Media (gaming/movies)">Media (gaming/movies)</option>
+                    <option value="Computers/Technology">Computers/Technology</option>
+                    <option value="Kitchen">Kitchen</option>
+                    <option value="Furniture">Furniture</option>
+                    <option value="Books">Books</option>
+                </select>
+                <!file upload>
+                {{form.hidden_tag()}}
+                {{form.file()}}
+                {{form.submit()}}
+            </form>
+        </body>
+    {%endif%}
+
+<!return to home button>
+        <body>
+            <button><a href="/">Return to home</a></button>
+        </body>
+    
+</html>

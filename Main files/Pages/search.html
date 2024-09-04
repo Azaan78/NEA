@@ -1,0 +1,27 @@
+<!page title>
+<html>
+	<!title for page>
+	<head>
+		<title>Searched item</title>
+	</head>
+	<!section where messages are flashed>
+	{%for message in get_flashed_messages()%}
+		<div style="text-align:center;" class="alert alert-warning alert-dismissible fade show" role="alert">
+			{{message}}
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+		</div>
+	{%endfor%}
+<!variables being displayed>
+	<body>
+		{{template}}
+		{{results}}
+		<img src="data:image/jpeg;base64,{{ photo }}">
+		<form action="/add_to_cart" method="post">
+			{% set cartID = Product_ID_3 %}
+			<input type="hidden" id="cartID" name="cartID" value="{{cartID}}">
+			<button type="submit">add to cart</button>
+		</form>
+<!return to home button>
+		<button><a href="/">Return to home</a></button>
+	</body>
+</html>

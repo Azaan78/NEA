@@ -1,0 +1,151 @@
+<!page title>
+<html>
+	<!title for page>
+	<head>
+		<title>Conputers</title>
+		<h1 style="text-align:center;">Computer page</h1>
+	</head>
+	<!section where messages are flashed>
+	{%for message in get_flashed_messages()%}
+		<div style="text-align:center;" class="alert alert-warning alert-dismissible fade show" role="alert">
+			{{message}}
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+		</div>
+	{%endfor%}
+	<!CSS classes>
+	<style>
+		/*icon shortcuts*/
+		.shortcuts{
+			height:50px;
+			width:50px;
+			position:absolute;}
+		/*CSS for dropdown menu*/
+		.dropdown{
+			position:relative;
+			display:inline-block;}
+		.dropdown-content{
+			position:absolute;
+			display:none;}
+		.dropdown-content a{
+			color:cornflowerblue;
+			display:block;
+			border:thick;
+			background-color:aliceblue;}
+		.dropdown:hover .dropdown-content{
+			display:block;}
+		.dropdown a:hover{
+			background-color:cornflowerblue;
+			color:aliceblue;}
+		/*CSS for gallery and image display*/
+		.gallery{
+			display:inline-block;
+			margin:5px;
+			width:300px;
+			height:300px;
+			position:absolute;
+			border:1px solid black;}
+		.gallery img{
+			height:100%;
+			max-width:300px;}
+		.description{
+			border:1px solid black;
+			position:absolute;
+			width:150px;
+			height:300px;}
+	</style>
+
+<!Search bar function>
+<form style="text-align: center;" method="post" action="/search">
+	<input type="text" id="search" name="search" placeholder="Search...">
+</form>
+
+<body>
+	<!links to all other pages>
+			<a style="position:absolute;top:10px;" href="/"><img class="shortcuts" src="data:image/jpeg;base64,{{ BlueHouse }}"></a><br>
+			<a style="position:absolute;top:60px;" href="/Clothing"><img class="shortcuts" src="data:image/jpeg;base64,{{ BlueClothes }}"></a><br>
+			<a style="position:absolute;top:110px;" href="/Media"><img class="shortcuts" src="data:image/jpeg;base64,{{ BlueController }}"></a><br>
+			<img style="position:absolute;top:160px;" class="shortcuts" src="data:image/jpeg;base64,{{ RedLaptop }}"><br>
+			<a style="position:absolute;top:210px;" href="/Kitchen"><img class="shortcuts" src="data:image/jpeg;base64,{{ BlueWisk }}"></a><br>
+			<a style="position:absolute;top:260px;" href="/Furniture"><img class="shortcuts" src="data:image/jpeg;base64,{{ BlueFurniture }}"></a><br>
+			<a style="position:absolute;top:310px;" href="/Books"><img class="shortcuts" src="data:image/jpeg;base64,{{ BlueBook }}"></a><br>
+	
+			<!dropdown menu>
+			<div style="position:absolute;left:1200px;top:30px;" class="dropdown">
+				<img src="data:image/jpeg;base64,{{ Profile }}" height="50px" width="50px">
+				<div class="dropdown-content">
+					<a href="/login">login</a>
+					<a href="/Register">Register</a>
+					<a href="/Logout">Logout</a>
+					<a href="/Delete">Delete Account</a>
+					<a href="/ChangeUsername">Username Change</a>
+					<a href="/ChangePassword">Password Change</a>
+				</div>
+			</div>
+			<a style="position:absolute;left:1130px;top:30px;" href="/view_cart"><img class="shortcuts" src="data:image/jpeg;base64,{{ cart_icon }}"></a>
+
+			<!page content>
+			<!product one content>
+			<div style="left:120px;top:120px;" class="gallery">
+				<img src="data:image/jpeg;base64,{{ image_1 }}">
+				<p style="left:320px;top:-20px;"
+				class="description">Product ID:{{Product_ID_1}}<br>
+									Product name:{{Product_name_1}}<br>
+									Product type:{{Product_Type_1}}<br>
+									Price:{{Price_1}}<br>
+									Place holder text for product one</p>
+				<form action="/add_to_cart" method="post">
+					{% set cartID = Product_ID_1 %}
+					<input type="hidden" id="cartID" name="cartID" value="{{cartID}}">
+					<button type="submit">add to cart</button>
+				</form>
+			</div>
+	
+			<!product two content>
+			<div style="left:680px;top:120px;" class="gallery">
+				<img src="data:image/jpeg;base64,{{ image_2 }}">
+				<p style="left:320px;top:-20px;"
+				class="description">Product ID:{{Product_ID_2}}<br>
+									Product name:{{Product_name_2}}<br>
+									Product type:{{Product_Type_2}}<br>
+									Price:{{Price_2}}<br>
+									Place holder text for product two</p>
+				<form action="/add_to_cart" method="post">
+					{% set cartID = Product_ID_2 %}
+					<input type="hidden" id="cartID" name="cartID" value="{{cartID}}">
+					<button type="submit">add to cart</button>
+				</form>
+			</div>
+	
+			<!product three content>
+			<div style="left:120px; top:500px;" class="gallery">
+				<img src="data:image/jpeg;base64,{{ image_3 }}">
+				<p style="left:320px;top:-20px;"
+				class="description">Product ID:{{Product_ID_3}}<br>
+									Product name:{{Product_name_3}}<br>
+									Product type:{{Product_Type_3}}<br>
+									Price:{{Price_3}}<br>
+									Place holder text for product three</p>
+				<form action="/add_to_cart" method="post">
+					{% set cartID = Product_ID_3 %}
+					<input type="hidden" id="cartID" name="cartID" value="{{cartID}}">
+					<button type="submit">add to cart</button>
+				</form>
+			</div>
+	
+			<!product four content>
+			<div style="left:680px; top:500px;" class="gallery">
+				<img src="data:image/jpeg;base64,{{ image_4 }}">
+				<p style="left:320px;top:-20px;"
+				class="description">Product ID:{{Product_ID_4}}<br>
+									Product name:{{Product_name_4}}<br>
+									Product type:{{Product_Type_4}}<br>
+									Price:{{Price_4}}<br>
+									Place holder text for product four</p>
+				<form action="/add_to_cart" method="post">
+					{% set cartID = Product_ID_4 %}
+					<input type="hidden" id="cartID" name="cartID" value="{{cartID}}">
+					<button type="submit">add to cart</button>
+				</form>
+			</div>
+</body>
+</html>

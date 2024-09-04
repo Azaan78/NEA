@@ -1,0 +1,49 @@
+<html>
+	<!section where messages are flashed>
+    {%for message in get_flashed_messages()%}
+		<div style="text-align:center;" class="alert alert-warning alert-dismissible fade show" role="alert">
+			{{message}}
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+		</div>
+	{%endfor%}
+
+	<!section for generating username change page>
+	{%if change=='user'%}
+		<!title for page>
+		<h1>Username change</h1>
+		<body>
+			<!form to take input of username being changed, verifies login then asks for new username>
+			<form method="post" action="/ChangeUsername">
+				<label for="username">Current username:</label>
+				<input type="text" id="olduser" name="olduser"><br>
+				<label for="username">New username:</label>
+				<input type="text" id="newuser" name="newuser"><br>
+				<label for="username">Confirm new username:</label>
+				<input type="text" id="newusercon" name="newusercon"><br>
+				<input type="submit" value="Submit">
+			</form>
+<!return to home button>
+			<button><a href="/">Return to home</a></button>
+		</body>
+	{%endif%}
+
+	<!section for generating password change page>
+	{%if change=='pass'%}
+	<!title for page>
+		<h1>Password change</h1>
+		<body>
+			<!form to take input of password being changed, verifies login then asks for new password>
+			<form method="post" action="/ChangePassword">
+				<label for="password">Current password:</label>
+				<input type="text" id="oldpass" name="oldpass"><br>
+				<label for="password">New password:</label>
+				<input type="text" id="newpass" name="newpass"><br>
+				<label for="password">Confirm new password:</label>
+				<input type="text" id="newpasscon" name="newpasscon"><br>
+				<input type="submit" value="Submit">
+			</form>
+<!return to home button>
+			<button><a href="/">Return to home</a></button>
+		</body>
+	{%endif%}
+</html>
